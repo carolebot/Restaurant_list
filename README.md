@@ -6,7 +6,7 @@
 - You can click each restaurant to see more information (phone, address...)
 - You can use search bar to find restaurant (type name or category)
 
-## What I use 
+## What I used
 - express: 4.17.1, express-handlebars: 5.3.2
 - Bootstrap, jQuery, Popper.js and Font Awesome
 
