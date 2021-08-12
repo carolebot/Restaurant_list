@@ -10,6 +10,18 @@ const exphbs = require('express-handlebars')
 const restaurantList = require('./restaurant.json')
 
 
+//set db 
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/restaurant-list')
+
+const db = mongoose.connection
+db.on('error', () => {
+  console.log('mongodb error')
+})
+
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
 
 // template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -17,7 +29,6 @@ app.set('view engine', 'handlebars')
 
 // set static file
 app.use(express.static('public'))
-
 
 
 // set route
