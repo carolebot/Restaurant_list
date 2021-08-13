@@ -20,14 +20,14 @@
 </div>
 
 {{!-- restaurants:restaurants --}}
-
+{{#if restaurants}}
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <a href="/restaurants/{{this._id}}" class="text-secondary">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
             <div class="card-body p-3">
@@ -55,13 +55,14 @@
     </div>
   </div>
 </div>
+{{/if}}
 
-{{#unless restaurants}}
+{{#unless restaurants}} 
 {{!-- 搜尋無結果提醒 --}}
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto text-center">
-      很抱歉，您搜尋的關鍵字沒有任何結果:( <br> 回<a href="/">我的餐廳清單</a> 或 繼續搜尋
+      很抱歉，您搜尋的關鍵字沒有任何結果:( <br> 回<a href="/">我的餐廳清單</a> 可以試著搜尋看看其他關鍵字唷＾＾
     </div>
   </div>
 </div>
