@@ -1,19 +1,21 @@
-// set express
+// set express, port, handlebars, bodyParser
 const express = require('express')
 const app = express()
-const Restaurant = require('./models/restaurant')
-
-// set port 
 const port = 3000
-
-// set tools
 const exphbs = require('express-handlebars')
-// const restaurantList = require('./restaurant.json')
-
-
-//set db 
+const Restaurant = require('./models/restaurant')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurant-list')
+
+
+// template engine
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+
+
+// mongodb and mongoose ///////////////////
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 db.on('error', () => {
@@ -24,19 +26,35 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-// template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
-
-// set static file
-app.use(express.static('public'))
 
 
-// set route
+// setting routes ////////////
 app.get('/', (req, res) => {
-  Restaurant.find()
+  Restaurant.find() //找全部資料
     .lean() //mongoose to array
     .then(restaurants => res.render('index', {restaurants}))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
+app.post('/restaurants', (req, res) => {
+  console.log(req.body)
+  const restaurant = new Restaurant({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    phone: req.body.phone,
+    description: req.body.description
+  })
+  restaurant.save()
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
@@ -57,7 +75,6 @@ app.get('/search', (req, res) => {
   }
   res.render('index', { restaurants: restaurants, keyword: keyword })
 })
-
 
 
 // server start and listen
