@@ -107,6 +107,16 @@ app.post('/restaurants/:restaurantId/edit', (req, res) => {
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
+
+// delete a restaurant
+app.post('/restaurants/:restaurantId/delete', (req, res) => {
+  const id = req.params.restaurantId
+  Restaurant.findById(id) //確保資料存在
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 /// 
 // app.get('/search', (req, res) => {
 //   const keyword = req.query.keyword.trim().toLowerCase()
