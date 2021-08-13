@@ -70,9 +70,7 @@ app.get('/search', (req, res) => {
     return restaurant.name.toLowerCase().includes(keyword) ||
       restaurant.category.toLowerCase().includes(keyword)
   })
-  if (!restaurants.length) {
-    return res.render('noresult', { restaurants: restaurants, keyword: keyword })
-  }
+ 
   res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
