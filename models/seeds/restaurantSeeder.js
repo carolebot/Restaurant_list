@@ -17,7 +17,7 @@ db.once('open', () => {
       "name_en": "Sababa Pita Bar",
       "category": "中東料理",
       "image": "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg",
-      "location": "台北市羅斯福路三段 283 巷 17 號",
+      "location": "and delete ",
       "phone": "02 2363 8009",
       "google_map": "https://goo.gl/maps/BJdmLuVdDbw",
       "rating": 4.1,
