@@ -94,15 +94,15 @@ app.post('/restaurants/:restaurantId/edit', (req, res) => {
   Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = req.body.name,
-      restaurant.name_en = req.body.name_en,
-      restaurant.category = req.body.category,
-      restaurant.image = req.body.image,
-      restaurant.location = req.body.location,
-      restaurant.phone = req.body.phone,
-      restaurant.google_map = req.body.google_map,
-      restaurant.rating = req.body.rating,
-      restaurant.description = req.body.description,
-      restaurant.save()
+        restaurant.name_en = req.body.name_en,
+        restaurant.category = req.body.category,
+        restaurant.image = req.body.image,
+        restaurant.location = req.body.location,
+        restaurant.phone = req.body.phone,
+        restaurant.google_map = req.body.google_map,
+        restaurant.rating = req.body.rating,
+        restaurant.description = req.body.description,
+        restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
@@ -118,15 +118,15 @@ app.post('/restaurants/:restaurantId/delete', (req, res) => {
 })
 
 /// 
-// app.get('/search', (req, res) => {
-//   const keyword = req.query.keyword.trim().toLowerCase()
-//   const restaurants = restaurantList.results.filter(restaurant => {
-//     return restaurant.name.toLowerCase().includes(keyword) ||
-//       restaurant.category.toLowerCase().includes(keyword)
-//   })
-
-//   res.render('index', { restaurants: restaurants, keyword: keyword })
-// })
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.trim().toLowerCase()
+  const keywordRegex = new RegExp(keyword, 'i')
+  Restaurant.find({ $or: [{ category: { $regex: keywordRegex } }, { name: { $regex: keywordRegex } }] })
+    .lean()
+    .then(restaurants => {
+      res.render('index', { restaurants, keyword })
+    })
+})
 
 
 // server start and listen
