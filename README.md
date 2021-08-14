@@ -20,6 +20,7 @@
 - open your terminal
 - `cd` to restaurant list file
 - type `npm install`
-- type `npm run dev`
+- type `npm run seed` to create default data
+- type `npm run dev` to start 
 - You will see `running https://localhost:3000` 
 - You can open http://localhost:3000 on your browser and check Restaurant List now

@@ -46,15 +46,15 @@ db.once('open', () => {
       "description": "以頂級食材與料理技法完美呈現各類經典義式料理，獅頭造型烤爐現作pizza與開放式廚房現作龍蝦茄汁雞蛋銀絲麵是不可錯過的必嚐推薦！夜間國際級樂團的熱力演出，感受活力四射的現場魅力。"
     },
     {
-      "name": "艾朋牛排餐酒館",
-      "name_en": "A Point Steak & Bar",
-      "category": "美式",
-      "image": "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5630/04.jpg",
-      "location": "110 台北市信義區忠孝東路五段 139 號 2 樓",
-      "phone": "02 2756 7788",
-      "google_map": "https://goo.gl/maps/6Lq7U2ahp152",
-      "rating": 4.2,
-      "description": "從味蕾開始，重拾美味感動。艾朋牛排餐酒館對高級料理的細選珍饌堅持，更勇於翻脫新意，要以平易親人的親切風格，同時不失料理獨家精髓，成功打動每吋挑剔味蕾，讓每位顧客享用鮮嫩Steak牛排風采，咀嚼Pasta義大利麵層次風味！"
+      "name": "五十嵐",
+      "name_en": "50Lan Drink",
+      "category": "飲料店",
+      "image": "https://cdn.walkerland.com.tw/images/upload/subject/2021/01/dd678d9f08d76c4330bdc6c923026aafd3c58fdf.jpg",
+      "location": "台北市士林區文林路191號",
+      "phone": "02 2881 5922",
+      "google_map": "https://goo.gl/maps/uaUJ7TCGozTgHwkZA",
+      "rating": 5.0,
+      "description": "台北最棒的50嵐!!"
     },
     {
       "name": "Gusto Pizza",
@@ -90,15 +90,15 @@ db.once('open', () => {
       "description": "我們在乎每一位顧客、賣出去的每一滴咖啡、每一粒咖啡豆。而今，「Fika Fika Cafe Online Store」更期望把如此美好的體驗，分享給喜歡我們的每一位顧客，希望您無論在世界的哪一個角落，都能與我們一起享受「Fika Fika」的美好時光。"
     },
     {
-      "name": "布娜飛比利時啤酒餐廳",
-      "name_en": "Bravo Beer",
-      "category": "義式餐廳",
-      "image": "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5634/08.jpg",
-      "location": "台北市松山區市民大道四段 185 號",
-      "phone": "02 2570 1255",
-      "google_map": "https://goo.gl/maps/V9mKwVJ4s5v",
-      "rating": 4.7,
-      "description": "我們希望帶給您的，不只是啤酒，有美食，還有一份對生活的熱情。 義大利語「Bravo」的原意─「喝采」、「讚揚」， 我想著如果有一個大家都能輕鬆品嚐美酒、享受美食的地方，那就真的是太棒了！ 因為這個念頭，加上一股對比利時啤酒的熱情， 於是「Bravo Beer布娜飛比利時啤酒餐廳」在2006年誕生了..."
+      "name": "可不可熟成紅茶",
+      "name_en": "Kebuke",
+      "category": "飲料店",
+      "image": "https://im.marieclaire.com.tw/m800c533h100b0/assets/mc/202106/60C03E8D1CA021623211661.jpeg",
+      "location": " 台北市大安區和平東路二段307號",
+      "phone": "02-2709-8989",
+      "google_map": "https://goo.gl/maps/LNnD83XSWdR5n1C86",
+      "rating": 4.8,
+      "description": "創立於2008年的初夏來自於台中市向上市場旁多年來堅持做對的事情透過一杯好茶傳遞溫暖的人情味。吃完飯後好適合喝一杯可不可解膩啊！"
     })
   console.log('done!')
 })
