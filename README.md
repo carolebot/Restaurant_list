@@ -16,7 +16,7 @@
 - mongoose 5.13.7
 
 ## How to Use
-- git clone https://github.com/carolebot/A1_restaurant_list.git
+- git clone https://github.com/carolebot/Restaurant_list.git
 - open your terminal
 - `cd` to restaurant list file
 - type `npm install`
