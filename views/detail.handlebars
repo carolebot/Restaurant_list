@@ -3,7 +3,7 @@
   <div class="container">
     <div class="text-right d-flex flex-row justify-content-end">
       <a href="/restaurants/{{restaurant._id}}/edit"><button class="btn btn-primary mx-2">Edit</button></a>
-      <form action="/restaurants/{{restaurant._id}}/delete" method="POST">
+      <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST">
         <button type="submit" class="btn btn-danger">Delete</button>
       </form>
       </div>
@@ -12,15 +12,15 @@
         <p class="mb-1">
           <span class="text-secondary">
             <i class="fas fa-utensils pr-2"></i>
-            類別：
+          Category：
           </span>
           {{restaurant.category}}
         </p>
   
         <p class="mb-1">
-          <span class="text-secondary">
+          <span class="text-secondary">：
             <i class="fas fa-map-marker-alt pr-2"></i>
-            地址：
+            Location：
           </span>
           {{restaurant.location}}
           {{#if restaurant.google_map}}
@@ -33,7 +33,7 @@
         <p class="mb-1">
           <span class="text-secondary">
             <i class="fas fa-mobile-alt pr-2"></i>
-            電話：
+            Phone：
           </span>
           {{restaurant.phone}}
         </p>
@@ -46,6 +46,6 @@
       </div>
     </div>
     <div class="text-center mb-3">
-    <a href="/">回到上一頁</a>
+    <a href="/">Back to home</a>
     </div>
   </div>

@@ -16,15 +16,16 @@
             value="{{keyword}}" aria-describedby="search-button">    
         </div>
       </form>
-      <!-- search bar -->
-      <div class="Sort">
-        <select class="custom-select" id="inputGroupSelect02">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+  
+      <form action="/" class="d-flex">
+        <select name ="sort" class="custom-select" id="sort">
+          <option value="asc">Name(a-z)</option>
+          <option value="desc">Name(z-a)</option>
+          <option value="category">category</option>
+          <option value="location">location</option>
         </select>
-      </div>
+        <button type="submit" class="btn btn-secondary mx-2">Sort</button>
+      </form>
       </div>
       <div class="card-columns">
         {{#each restaurants}}
@@ -45,7 +46,7 @@
             <div class="card-footer bg-transparent d-flex align-items-center justify-content-end">
               <a href="./restaurants/{{this._id}}/edit">Edit</a>
               <a href="./restaurants/{{this._id}}" class="mx-2">Details</a>
-              <form action="/restaurants/{{this._id}}/delete" method="POST" style="display: inline;">
+              <form action="/restaurants/{{this._id}}/?_method=DELETE" method="POST" style="display: inline;">
                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
               </form>
             </div>

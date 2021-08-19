@@ -5,6 +5,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 
 
 // template engine
@@ -12,6 +13,10 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
+
+
+// methodOverride
+app.use(methodOverride('_method'))
 
 
 // mongodb and mongoose ///////////////////
@@ -46,16 +51,13 @@ app.get('/restaurants/new', (req, res) => {
 })
 
 app.post('/restaurants', (req, res) => {
+  if (req.body.image === '') {
+    req.body.image = undefined;
+  }
+  const { name, name_en, category, image, location, google_map, rating, phone, description } = req.body
+
   const restaurant = new Restaurant({
-    name: req.body.name,
-    name_en: req.body.name_en,
-    category: req.body.category,
-    image: req.body.image || "https://www.ristobartwentyfive.com/wp-content/uploads/2019/07/restaurant-food-salat-2.jpg",
-    location: req.body.location || null,
-    google_map: req.body.google_map,
-    rating: req.body.rating,
-    phone: req.body.phone,
-    description: req.body.description
+    name, name_en, category, image, location, google_map, rating, phone, description
   })
 
   restaurant.save()
@@ -81,37 +83,29 @@ app.get('/restaurants/:restaurantId/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:restaurantId/edit', (req, res) => {
+app.put('/restaurants/:restaurantId', (req, res) => {
   const id = req.params.restaurantId
-  const name = req.body.name
-  const name_en = req.body.name_en
-  const category = req.body.category
-  const image = req.body.image
-  const location = req.body.location
-  const phone = req.body.phone
-  const google_map = req.body.google_map
-  const rating = req.body.rating
-  const description = req.body.description
+  const { name, name_en, category, image, location, google_map, rating, phone, description } = req.body
 
   Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = req.body.name,
-        restaurant.name_en = req.body.name_en,
-        restaurant.category = req.body.category,
-        restaurant.image = req.body.image,
-        restaurant.location = req.body.location,
-        restaurant.phone = req.body.phone,
-        restaurant.google_map = req.body.google_map,
-        restaurant.rating = req.body.rating,
-        restaurant.description = req.body.description,
-        restaurant.save()
+      restaurant.name_en = req.body.name_en,
+      restaurant.category = req.body.category,
+      restaurant.image = req.body.image,
+      restaurant.location = req.body.location,
+      restaurant.phone = req.body.phone,
+      restaurant.google_map = req.body.google_map,
+      restaurant.rating = req.body.rating,
+      restaurant.description = req.body.description,
+      restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 
 // delete a restaurant
-app.post('/restaurants/:restaurantId/delete', (req, res) => {
+app.delete('/restaurants/:restaurantId', (req, res) => {
   const id = req.params.restaurantId
   Restaurant.findById(id) //確保資料存在
     .then(restaurant => restaurant.remove())
@@ -119,7 +113,7 @@ app.post('/restaurants/:restaurantId/delete', (req, res) => {
     .catch(error => console.log(error))
 })
 
-/// 
+// search bar 
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim().toLowerCase()
   const keywordRegex = new RegExp(keyword, 'i')
