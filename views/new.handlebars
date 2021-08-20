@@ -14,8 +14,9 @@
     <div class="form-group">
       <label for="res_category">Category*</label>
       <input type="list" list="category" class="form-control" name="category" id="res_category"
-      placeholder="若選單沒有可自由填寫類別" value="{{category}}" required>
+       value="{{category}}" required>
       <datalist id="category">
+        <option selected disabled>--請選擇--</option>
         <option>中東料理</option>
         <option>義式餐廳</option>
         <option>酒吧</option>
