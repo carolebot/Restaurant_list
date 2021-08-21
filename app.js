@@ -4,9 +4,8 @@ const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
 const routes = require('./routes') //預設會找底下的index.js
-const mongoose = require('mongoose')
 const methodOverride = require('method-override')
-
+require('./config/mongoose')
 
 // template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -21,27 +20,6 @@ app.use(methodOverride('_method'))
 
 // routes
 app.use(routes)
-
-
-// mongodb and mongoose ///////////////////
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-db.on('error', () => {
-  console.log('mongodb error')
-})
-
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
-
-
-
-// setting routes ////////////
-
-
-
-
 
 
 // server start and listen

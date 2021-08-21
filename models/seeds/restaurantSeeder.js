@@ -1,16 +1,8 @@
-// set db
-const mongoose = require('mongoose')
-const Restaurant = require('../restaurant')
-
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-db.on('error', () => {
-  console.log('mongodb error!')
-})
+// require db config setting
+const db = require('../../config/mongoose')
+const Restaurant = require('../../models/restaurant')
 
 db.once('open', () => {
-  console.log('mongodb connected!')
   Restaurant.create(
     {
       "name": "Sababa 沙巴巴中東美食",
@@ -46,15 +38,15 @@ db.once('open', () => {
       "description": "以頂級食材與料理技法完美呈現各類經典義式料理，獅頭造型烤爐現作pizza與開放式廚房現作龍蝦茄汁雞蛋銀絲麵是不可錯過的必嚐推薦！夜間國際級樂團的熱力演出，感受活力四射的現場魅力。"
     },
     {
-      "name": "五十嵐",
-      "name_en": "50Lan Drink",
-      "category": "飲料店",
-      "image": "https://cdn.walkerland.com.tw/images/upload/subject/2021/01/dd678d9f08d76c4330bdc6c923026aafd3c58fdf.jpg",
-      "location": "台北市士林區文林路191號",
-      "phone": "02 2881 5922",
-      "google_map": "https://goo.gl/maps/uaUJ7TCGozTgHwkZA",
-      "rating": 5.0,
-      "description": "台北最棒的50嵐!!"
+      "name": "Fika Fika Cafe",
+      "name_en": "Fika Fika Cafe",
+      "category": "咖啡",
+      "image": "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5633/07.jpg",
+      "location": "台北市中山區伊通街 33 號",
+      "phone": "02 2507 0633",
+      "google_map": "https://goo.gl/maps/Y1iyiSK7EeR2",
+      "rating": 4.3,
+      "description": "我們在乎每一位顧客、賣出去的每一滴咖啡、每一粒咖啡豆。而今，「Fika Fika Cafe Online Store」更期望把如此美好的體驗，分享給喜歡我們的每一位顧客，希望您無論在世界的哪一個角落，都能與我們一起享受「Fika Fika」的美好時光。"
     },
     {
       "name": "Gusto Pizza",
@@ -79,15 +71,15 @@ db.once('open', () => {
       "description": "紅酒吧，現代創意料理，開胃小館。提供純素選擇，提供無麩質選擇，提供素食選擇。"
     },
     {
-      "name": "Fika Fika Cafe",
-      "name_en": "Fika Fika Cafe",
-      "category": "咖啡",
-      "image": "https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5633/07.jpg",
-      "location": "台北市中山區伊通街 33 號",
-      "phone": "02 2507 0633",
-      "google_map": "https://goo.gl/maps/Y1iyiSK7EeR2",
-      "rating": 4.3,
-      "description": "我們在乎每一位顧客、賣出去的每一滴咖啡、每一粒咖啡豆。而今，「Fika Fika Cafe Online Store」更期望把如此美好的體驗，分享給喜歡我們的每一位顧客，希望您無論在世界的哪一個角落，都能與我們一起享受「Fika Fika」的美好時光。"
+      "name": "五十嵐",
+      "name_en": "50Lan Drink",
+      "category": "飲料店",
+      "image": "https://cdn.walkerland.com.tw/images/upload/subject/2021/01/dd678d9f08d76c4330bdc6c923026aafd3c58fdf.jpg",
+      "location": "台北市士林區文林路191號",
+      "phone": "02 2881 5922",
+      "google_map": "https://goo.gl/maps/uaUJ7TCGozTgHwkZA",
+      "rating": 5.0,
+      "description": "台北最棒的50嵐!!"
     },
     {
       "name": "可不可熟成紅茶",
@@ -102,3 +94,5 @@ db.once('open', () => {
     })
   console.log('done!')
 })
+
+process.exit()
