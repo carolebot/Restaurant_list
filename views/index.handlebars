@@ -6,26 +6,33 @@
     <div class="col-md-10 col-12 mx-auto">
 
       <div class="row d-flex justify-content-between p-3">
-        <form action="/search">
+        <form action="/">
           <div class="input-group ">
             <div class="input-group-append">
               <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
             </div>
             <input type="text" name="keyword" class="form-control" placeholder="name or category"
               aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
+            <input type="hidden" name="sortBy" value="{{sortBy}}" />
+            <input type="hidden" name="sortOrder" value="{{sortOrder}}" />
           </div>
         </form>
 
-        <form action="/" class="d-flex">
-          <select name="sort" class="custom-select" id="sort">
-            <option value="asc">Name(a-z)</option>
-            <option value="desc">Name(z-a)</option>
-            <option value="category">category</option>
-            <option value="location">location</option>
-          </select>
-          <button type="submit" class="btn btn-secondary mx-2">Sort</button>
-        </form>
+        <div class="d-flex justify-content-end">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle font-italic" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/?keyword={{keyword}}&sortBy=name&sortOrder=asc">A→Z
+              </a>
+              <a class="dropdown-item" href="/?keyword={{keyword}}&sortBy=name&sortOrder=desc">Z→A</a>
+              <a class="dropdown-item" href="/?keyword={{keyword}}&sortBy=category&sortOrder=asc">Category</a>
+              <a class="dropdown-item" href="/?keyword={{keyword}}&sortBy=rating&sortOrder=desc">Rating</a>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="card-columns">
         {{#each restaurants}}
         <a href="/restaurants/{{this._id}}" class="text-secondary">
@@ -88,7 +95,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto text-center">
-      Sorry, there are no results about this keyword.( <br> Back to<a href="/">My restaurant</a> You may try some other
+      Sorry, there are no results about this keyword.( <br> Back to <a href="/">My restaurant</a> You may try some other
       keywords＾＾
     </div>
   </div>
