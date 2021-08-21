@@ -92,7 +92,9 @@ db.once('open', () => {
       "rating": 4.8,
       "description": "創立於2008年的初夏來自於台中市向上市場旁多年來堅持做對的事情透過一杯好茶傳遞溫暖的人情味。吃完飯後好適合喝一杯可不可解膩啊！"
     })
-  console.log('done!')
+    .then(() => {
+      console.log('done.')
+      process.exit()
+    })
 })
 
-process.exit()
