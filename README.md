@@ -9,6 +9,7 @@
 - You can click `edit` to edit restaurant's information 
 - You can click `delete` to delete restaurants
 - You can use search bar to find related restaurants
+- You can use sort button to sort restaurants (by name, category or rating)
 
 ## What I used
 - express: 4.17.1, express-handlebars: 5.3.2
