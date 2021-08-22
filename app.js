@@ -24,5 +24,5 @@ app.use(routes)
 
 // server start and listen
 app.listen(port, () => {
-  console.log(`running https://localhost:${port}`)
+  console.log(`running https//localhost:${port}`)
 })

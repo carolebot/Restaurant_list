@@ -7,15 +7,15 @@ const Restaurant = require('../../models/restaurant')
 router.get('/', (req, res) => {
   const keyword = req.query.keyword
   const keywordRegex = new RegExp(keyword, 'i')
-  const sortBy = req.query.sortBy
-  const sortOrder = req.query.sortOrder
-  const sortObject = {};
+  const sortBy = req.query.sortBy || 'name'
+  const sortOrder = req.query.sortOrder || 'asc'
+  const sortObject = {}
   sortObject[sortBy] = sortOrder
   Restaurant.find({
     $or: [{
-      category: { $regex: keywordRegex }
-    }, {
       name: { $regex: keywordRegex }
+    }, {
+      category: { $regex: keywordRegex }
     }]
   })
     .lean()
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
     .then(restaurants => {
       res.render('index', { restaurants, keyword, sortBy, sortOrder })
     })
-    .catch(error => console.log(error))
+    .catch(err => console.log(err))
 })
 
 module.exports = router
