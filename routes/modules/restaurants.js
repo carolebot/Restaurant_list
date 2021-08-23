@@ -9,13 +9,12 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  if (req.body.image === '') {
-    req.body.image = undefined;
-  }
-  const { name, name_en, category, image, location, google_map, rating, phone, description } = req.body
+  
+  const inputImage = req.body.image || undefined
+  const { name, name_en, category, location, google_map, rating, phone, description } = req.body
 
   const restaurant = new Restaurant({
-    name, name_en, category, image, location, google_map, rating, phone, description
+    name, name_en, category, inputImage, location, google_map, rating, phone, description
   })
 
   restaurant.save()
