@@ -8,7 +8,7 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
-router.post('', (req, res) => {
+router.post('/', (req, res) => {
   if (req.body.image === '') {
     req.body.image = undefined;
   }
