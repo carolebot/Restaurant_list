@@ -4,7 +4,7 @@ const restaurantSchema = new Schema({
   name: { type: String, required: true },
   name_en: { type: String },
   category: { type: String, required: true },
-  image: { type: String, default: "https://www.ristobartwentyfive.com/wp-content/uploads/2019/07/restaurant-food-salat-2.jpg" },
+  image: { type: String },
   location: { type: String, required: true },
   phone: { type: String, required: true },
   google_map: { type: String },

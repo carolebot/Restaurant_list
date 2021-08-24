@@ -8,13 +8,12 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
-router.post('/', (req, res) => {
-  
-  const inputImage = req.body.image || undefined
+router.post('/', (req, res) => { 
+  const inputImage = req.body.image || "https://www.ristobartwentyfive.com/wp-content/uploads/2019/07/restaurant-food-salat-2.jpg"
   const { name, name_en, category, location, google_map, rating, phone, description } = req.body
 
   const restaurant = new Restaurant({
-    name, name_en, category, inputImage, location, google_map, rating, phone, description
+    name, name_en, category, image: inputImage, location, google_map, rating, phone, description
   })
 
   restaurant.save()
